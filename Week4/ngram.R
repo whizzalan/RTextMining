@@ -12,3 +12,10 @@ ngram <- function(sentence, n) {
     substr(sentence, i, i+n-1)
   })
 } 
+
+
+ngram_split <- function(sentence, n) {
+  do.call(rbind,lapply(1 : (nchar(sentence)-n+1), function(i){
+    unlist(strsplit(substr(sentence, i, i+n-1),,split=""))
+  }))
+} 
