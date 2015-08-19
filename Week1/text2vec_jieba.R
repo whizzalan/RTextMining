@@ -9,6 +9,7 @@
 # pushDf = do.call(rbind,lapply(postData[data_idx],function(xx) xx$pushDf))
 
 unlist(postDf$Title)[1]
+# install.packages("jiebaR")
 library(jiebaR)
 messages = unlist(postDf$Title)
 mixseg = worker()
@@ -18,6 +19,7 @@ paste(segRes[[1]],collapse = " ")
 
 
 library(tm)
+# install.packages("tm")
 tmWordsVec = sapply(segRes,function(ws) paste(ws,collapse = " "))
 corpus <- Corpus(VectorSource(tmWordsVec))
 tdm = TermDocumentMatrix(corpus,control = list(wordLengths = c(1, Inf)))
