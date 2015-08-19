@@ -1,9 +1,6 @@
 
-# GData <- unlist(GpostDf$Text)
-# HPData <- unlist(HPpostDf$Text)
-GData <- unlist(GpostDf$Title)
-HPData <- unlist(HPpostDf$Title)
-
+GData <- unlist(GpostDf$Text)
+HPData <- unlist(HPpostDf$Text)
 allData <- c(GData, HPData)
 
 
@@ -15,17 +12,18 @@ messages = unlist(allData)
 segRes = lapply(messages,function(msg) mixseg <= msg)
 paste(segRes[[1]],collapse = " ")
 
-
 library(tm)
 tmWordsVec = sapply(segRes,function(ws) paste(ws,collapse = " "))
 corpus <- Corpus(VectorSource(tmWordsVec))
 tdm = TermDocumentMatrix(corpus,control = list(wordLengths = c(1, Inf)))
 dim(tdm)
-inspect(tdm)
+# inspect(tdm)
 
 
-library(rpart)
+library(rpart) 
 Features = t(as.matrix(tdm))
+Features[1:10,1:10] 
+
 Labels = c(rep("G",length(GData)),rep("HP",length(HPData)))
 
 
