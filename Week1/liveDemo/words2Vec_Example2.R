@@ -1,6 +1,10 @@
+# install.packages("rJava")
+# install.packages("Rwordseg", repos="http://R-Forge.R-project.org")
 
-library("Rwordseg", lib.loc="/usr/local/lib/R/site-library")
+# library("Rwordseg", lib.loc="~/R/x86_64-pc-linux-gnu-library/3.1")
+# .libPaths()
 
+library(Rwordseg)
 messages = c("你愛她","她愛你")
 segmentCN(messages)
 segmentCN(messages,returnType = "tm")

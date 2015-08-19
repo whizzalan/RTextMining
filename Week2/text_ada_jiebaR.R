@@ -1,7 +1,10 @@
 
-GData <- unlist(GpostDf$Text)
-HPData <- unlist(HPpostDf$Text)
-AllData <- c(GData, HPData)
+# GData <- unlist(GpostDf$Text)
+# HPData <- unlist(HPpostDf$Text)
+GData <- unlist(GpostDf$Title)
+HPData <- unlist(HPpostDf$Title)
+
+allData <- c(GData, HPData)
 
 
 library(jiebaR)
@@ -17,6 +20,7 @@ library(tm)
 tmWordsVec = sapply(segRes,function(ws) paste(ws,collapse = " "))
 corpus <- Corpus(VectorSource(tmWordsVec))
 tdm = TermDocumentMatrix(corpus,control = list(wordLengths = c(1, Inf)))
+dim(tdm)
 inspect(tdm)
 
 
