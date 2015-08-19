@@ -1,7 +1,7 @@
 
 rm(list=ls(all.names = TRUE))
 
-source("packIntoFunction.R")
+source(paste0(getwd(),"/PttCrawler/packIntoFunction.R"))
 
 listPageUrls = getListPageUrls("Gossiping")[1:5]
 listPageUrls
