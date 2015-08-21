@@ -1,3 +1,7 @@
+＃ http://www.bjt.name/upload/pdf/Text%20Mining%20in%20R.pdf
+
+
+
 RTrack.title = '2015台灣資料科學愛好者年會 R 語言資料分析上手課程 '
 RTrack.content = "面對龐大與多元的資料浪潮，資料科學世代已經興起，近年來國外企業應用 R 語言進行資料分析已經相當成熟，包含 Google、Facebook、Agoda、Intel、Pfizer、Bank of America 等企業，都採用 R 語言進行資料分析。國際知名的 KDnuggets 論壇最新統計，R 語言已經連續三年獲得資料科學家採用資料分析語言第一名的殊榮。
 
@@ -12,8 +16,10 @@ library(tm)
 library(slam)
 # sudo apt-get install gsl-bin libgsl0-dev
 # install.packages("topicmodels")
+# archlinux: gsl
 library(topicmodels)
 library(wordcloud)
+# gfortran
 library(igraph)
 
 # JAVA PATH??
@@ -39,7 +45,7 @@ tmWordsVec = sapply(segRes,function(ws) paste(ws,collapse = " "))
 corpus <- Corpus(VectorSource(tmWordsVec))
 tdm = TermDocumentMatrix(corpus,control = list(wordLengths = c(1, Inf)))
 
-
+# ref: http://computational-communication.com/post/wen-ben-wa-jue/2013-09-27-topic-modeling-of-song-peom
 wordcorpus = corpus
 dtm1 <- DocumentTermMatrix(wordcorpus,
                            control = list(
